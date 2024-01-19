@@ -1,0 +1,35 @@
+name: Publish Web App CICD
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+
+        - name: Setup NodeJS ${{ matrix.node-version }}
+          uses: actions/setup-node@v4
+          with: 
+            node-version: ${{ matrix.node-version }}
+
+        - name: Install dependencies
+          uses: npm install
+
+        - name: Run the tests and generate coverage report
+          run: npm test -- --coverage
+
+        - name: Upload coverage to Codecov
+          uses: codecov/codecov-action@v1
+
+        - name: Build application
+          uses: npm run build
