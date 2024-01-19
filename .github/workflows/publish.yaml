@@ -9,18 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
         - name: Checkout repository
           uses: actions/checkout@v4
 
-        - name: Setup NodeJS ${{ matrix.node-version }}
+        - name: Setup NodeJS 18.x
           uses: actions/setup-node@v4
           with: 
-            node-version: ${{ matrix.node-version }}
+            node-version: '18.x'
 
         - name: Install dependencies
           uses: npm install
