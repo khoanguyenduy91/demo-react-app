@@ -6,13 +6,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <h1>{process.env.REACT_APP_TITLE}</h1>
         <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-          {process.env.REACT_APP_TITLE}
+           Learn React
         </a>
       </header>
     </div>
