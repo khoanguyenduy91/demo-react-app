@@ -36,4 +36,4 @@ jobs:
           run: npm test -- --coverage
 
         - name: Build application
-          run: npm run build --if-present
+          run: npm run build
